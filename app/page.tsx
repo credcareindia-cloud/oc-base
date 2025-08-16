@@ -207,6 +207,7 @@ export default function HomePage() {
           { name: "Shamal", role: "AI Specialist", image: "shamal.jpg" },
           { name: "Shuhaub", role: "Marketing & Ads specialist", image: "suhaib.jpg" },
           { name: "Rishad", role: "Developer", image: "rishad.jpg" },
+          { name: "Bisher", role: "Developer", image: "bisher.jpg" },
           { name: "Shifan", role: "Media & Ads specialist", image: "shifan.jpg" },
           { name: "Murshid", role: "Head of Operations", image: "murshid.jpg" },
           { name: "Najaf", role: "Developer", image: "najaf.jpg" },
