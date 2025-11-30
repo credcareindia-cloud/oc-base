@@ -22,9 +22,9 @@ export default function DevelopmentPage() {
             </Link>
             <div className="hidden md:flex items-center gap-6">
               <span className="text-blue-200 text-sm">Quick to:</span>
-               <Link href="/lead-generation">
+               <Link href="/contact">
               <Button variant="ghost" className="text-white hover:bg-[#2E5F66]">
-                Digital Marketing
+                Contact
               </Button>
             </Link>
              
@@ -51,23 +51,24 @@ export default function DevelopmentPage() {
             </h1>
 
             <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8">
-              <Badge className="bg-[#2E5F66] text-white px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">Apps</Badge>
+              <Badge className="bg-blue-500 text-white px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">Apps</Badge>
               <Badge className="bg-yellow-500 text-white px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">Software</Badge>
               <Badge className="bg-green-500 text-white px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">Web</Badge>
+              <Badge className="bg-purple-500 text-white px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm">AR/VR</Badge>
             </div>
 
             <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
               <div className="flex items-center gap-3">
                 <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-green-400 flex-shrink-0" />
-                <span className="text-white text-base sm:text-lg">High quality (web & app) development</span>
+                <span className="text-white text-base sm:text-lg">Build a solution tailored to you</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-green-400 flex-shrink-0" />
-                <span className="text-white text-base sm:text-lg">Flexible payments, no high upfront investment!</span>
+                <span className="text-white text-base sm:text-lg">Automate your workflows and processes</span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-green-400 flex-shrink-0" />
-                <span className="text-white text-base sm:text-lg">Ready-to-use solutions starting ₹999/month</span>
+                <span className="text-white text-base sm:text-lg">Building with you, as your in-house team</span>
               </div>
             </div>
           </div>
@@ -94,13 +95,13 @@ export default function DevelopmentPage() {
           <div className="text-center mb-8 sm:mb-12">
             <div className="flex items-center justify-center gap-2 mb-4">
               <Zap className="h-6 w-6 text-yellow-400" />
-              <span className="text-yellow-400 font-semibold text-sm sm:text-base">STARTUP SPECIAL</span>
+              <span className="text-yellow-400 font-semibold text-sm sm:text-base">Open Bim</span>
             </div>
             <h2 className="text-white text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
               Ready-to-Launch Solutions
             </h2>
             <p className="text-blue-100 text-base sm:text-lg max-w-2xl mx-auto">
-              Perfect for startups and growing businesses. Get started quickly with our pre-built solutions.
+  Get started quickly with our pre-built solutions.
             </p>
           </div>
 
@@ -301,7 +302,7 @@ export default function DevelopmentPage() {
               <CardContent className="p-6 sm:p-8 text-white relative">
                 <div className="absolute top-4 right-4">
                   <img
-                    src="sabs.png"
+                    src="sabs.jpg"
                     alt="FITS-LIST App"
                     className="w-16 h-20 sm:w-20 sm:h-28 object-cover rounded-lg"
                   />
@@ -325,14 +326,19 @@ export default function DevelopmentPage() {
             <div className="overflow-hidden py-3 sm:py-4 md:py-6">
               <div className="flex animate-scroll gap-2 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-12 items-center justify-center">
                 {[
-                  { name: "Motoclub", logo: "moto.jpg" },
-                  { name: "Sabs Online", logo: "sabs.png" },
-                  { name: "Bismi", logo: "bismi.jpeg" },
-                  { name: "Candy", logo: "candy.jpg" },
-                  { name: "Homely Food", logo: "homely.jpg" },
-                  { name: "Tesla", logo: "sabs.png" },
-                  { name: "Netflix", logo: "bismi.jpeg" },
-                  { name: "Adobe", logo: "moto.jpg" },
+                 { name: "Motoclub", logo: "moto.jpg" },
+         { name: "EllisDon", logo: "ellsidon.png" },
+             { name: "fineline", logo: "fineline.jpeg" },
+        { name: "Sabs Online", logo: "sabs.jpg" },
+        { name: "fineline", logo: "fineline.jpeg" },
+        { name: "uniqube", logo: "uniqube.png" },
+        { name: "mulk", logo: "mulk.png" },
+         { name: "fineline", logo: "fineline.jpeg" },
+               { name: "Adobe", logo: "moto.jpg" },
+        { name: "EllisDon", logo: "ellsidon.png" },
+        { name: "Tesla", logo: "sabs.jpg" },
+        { name: "mulk", logo: "mulk.png" },
+            { name: "fineline", logo: "fineline.jpeg" },
                 ].map((company, i) => (
                   <div
                     key={i}

@@ -8,7 +8,7 @@ import { Star, ArrowRight, Target, Code, BarChart3, ChevronLeft, ChevronRight } 
 export default function HomePage() {
     const scrollRef = useRef(null);
   return (
-  <div className="bg-white overflow-hidden">
+  <div className="bg-white overflow-hidden scroll-smooth">
   <section className="relative bg-gradient-to-br from-blue-50 to-[#3A7575] h-screen">
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative h-full">
@@ -24,44 +24,45 @@ export default function HomePage() {
       {/* Left Circle Photo */}
       <div className="hidden md:block absolute -left-20 top-[48%] transform -translate-y-1/2 
         w-40 h-40 lg:w-68 lg:h-68 rounded-full overflow-hidden shadow-lg">
-        <img src="murshid.jpg" alt="Office workspace" className="w-full h-full object-cover" />
+        <img src="shah.jpg" alt="Office workspace" className="w-full h-full object-cover" />
       </div>
 
       {/* Right Circle Photo */}
       <div className="hidden md:block absolute -right-20 top-[30%] transform -translate-y-1/2 
         w-40 h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden shadow-lg">
-        <img src="shah.jpg" alt="Team collaboration" className="w-full h-full object-cover" />
+        <img src="murshid.jpg" alt="Team collaboration" className="w-full h-full object-cover" />
       </div>
 
       {/* Center Content */}
       <div className="h-full flex flex-col justify-center items-center text-center pt-12">
         <h1 className="font-serif text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-          making tech <span className="text-blue-600">affordable</span>
+          your tech <span className="text-blue-600">partner</span>
         </h1>
         <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-         Empowering every business with accessible tech
+         we provide tech for Construction , Engineering and Architecture industries .
          <br/>
-          just start, grow, and pay as you go.
+        
+        specialized in BIM and Automation 
         </p>
 
        {/* CTA Buttons */}
 <div className="flex flex-row xs:flex-row gap-2 sm:gap-3 md:gap-4 justify-center mb-6 sm:mb-8 md:mb-12 px-3 sm:px-4 md:px-0">
-  <a href="/lead-generation" className="w-full xs:w-auto">
+  <a href="/development" className="w-full xs:w-auto">
     <Button 
       size="default" 
       className="w-full xs:w-auto bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 text-sm sm:text-base md:text-lg min-w-0 xs:min-w-[140px] sm:min-w-[160px]"
     >
-      <span className="truncate">Lead Generation</span>
+      <span className="truncate">Bim Softwares</span>
       <ArrowRight className="ml-1.5 sm:ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 flex-shrink-0" />
     </Button>
   </a>
-  <a href="/development" className="w-full xs:w-auto">
+  <a href="#services" className="w-full xs:w-auto">
     <Button
       size="default"
       variant="outline"
       className="w-full xs:w-auto border-blue-600 text-blue-600 hover:bg-blue-50 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 text-sm sm:text-base md:text-lg bg-transparent min-w-0 xs:min-w-[140px] sm:min-w-[160px]"
     >
-      <span className="truncate">Development</span>
+      <span className="truncate">Product/Services</span>
       <Code className="ml-1.5 sm:ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 flex-shrink-0" />
     </Button>
   </a>
@@ -83,13 +84,19 @@ export default function HomePage() {
     <div className="flex animate-scroll gap-3 sm:gap-6 md:gap-8 lg:gap-12 items-center justify-center">
       {[
         { name: "Motoclub", logo: "moto.jpg" },
-        { name: "Sabs Online", logo: "sabs.png" },
-        { name: "Bismi", logo: "bismi.jpeg" },
-        { name: "Candy", logo: "candy.jpg" },
-        { name: "Homely Food", logo: "homely.jpg" },
-        { name: "Tesla", logo: "sabs.png" },
-        { name: "Netflix", logo: "bismi.jpeg" },
-        { name: "Adobe", logo: "moto.jpg" },
+         { name: "EllisDon", logo: "ellsidon.png" },
+             { name: "fineline", logo: "fineline.jpeg" },
+        { name: "Sabs Online", logo: "sabs.jpg" },
+        { name: "fineline", logo: "fineline.jpeg" },
+        { name: "uniqube", logo: "uniqube.png" },
+        { name: "mulk", logo: "mulk.png" },
+         { name: "fineline", logo: "fineline.jpeg" },
+               { name: "Adobe", logo: "moto.jpg" },
+        { name: "EllisDon", logo: "ellsidon.png" },
+        { name: "Tesla", logo: "sabs.jpg" },
+        { name: "mulk", logo: "mulk.png" },
+            { name: "fineline", logo: "fineline.jpeg" },
+  
       ].map((company, i) => (
        <div
   key={i}
@@ -133,53 +140,174 @@ export default function HomePage() {
 
 
       {/* Services Visualization */}
-      <section className="py-20 bg-[#2E5F66]">
+      <section id="services" className="py-12 sm:py-16 md:py-20 bg-[#2E5F66]">
+        <style jsx>{`
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
               We can help you with the following:
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <Card className="p-8 hover:shadow-lg transition-shadow bg-gradient-to-br from-blue-50 to-white">
-              <CardContent className="p-0">
-                <div className="mb-6">
-                  <img
-                    src="marketing.jpg"
-                    alt="No-Cure No-Pay Marketing"
-                    className="w-full h-48 object-cover rounded-lg"
-                  />
-                </div>
-                <h3 className="font-serif text-2xl font-bold mb-4 text-center">No-Cure No-Pay Marketing</h3>
-               <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-  <a href="/lead-generation" className="flex items-center justify-center">
-    Get more clients
-    <ArrowRight className="ml-2 h-4 w-4" />
-  </a>
-</Button>
+          {/* Horizontal scrollable container */}
+          <div className="relative">
+            <div className="overflow-x-auto scrollbar-hide pb-4">
+              <div className="flex gap-4 sm:gap-6 md:gap-8 px-2 sm:px-0" style={{ width: "max-content", minWidth: "100%" }}>
 
-              </CardContent>
-            </Card>
+                {/* Card 1 - BIM Software Development */}
+                <Card className="w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50 to-white hover:scale-105">
+                  <CardContent className="p-4 sm:p-6 md:p-8">
+                    <div className="mb-4 sm:mb-6 overflow-hidden rounded-lg">
+                      <img
+                        src="marketing.jpg"
+                        alt="BIM Software Development"
+                        className="w-full h-40 sm:h-48 md:h-52 object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-center text-gray-800 min-h-[56px] sm:min-h-[64px]">
+                      BIM Software Development
+                    </h3>
+                    <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-sm sm:text-base">
+                      <a href="/lead-generation" className="flex items-center justify-center">
+                        Get more clients
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
 
-            <Card className="p-8 hover:shadow-lg transition-shadow bg-gradient-to-br from-blue-50 to-white">
-              <CardContent className="p-0">
-                <div className="mb-6">
-                  <img
-                    src="teamwork.jpg"
-                    alt="High-end Development"
-                    className="w-full h-48 object-cover rounded-lg"
-                  />
+                {/* Card 2 - Custom AI Assistant */}
+                <Card className="w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-purple-50 to-white hover:scale-105">
+                  <CardContent className="p-4 sm:p-6 md:p-8">
+                    <div className="mb-4 sm:mb-6 overflow-hidden rounded-lg">
+                      <img
+                        src="teamwork.jpg"
+                        alt="Custom AI Assistant Development"
+                        className="w-full h-40 sm:h-48 md:h-52 object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-center text-gray-800 min-h-[56px] sm:min-h-[64px]">
+                      Custom AI Agents / Predictive Models
+                    </h3>
+                    <Button asChild className="w-full bg-purple-600 hover:bg-purple-700 text-sm sm:text-base">
+                      <a href="/development" className="flex items-center justify-center">
+                        Build your dream
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {/* Card 3 - Automation Solutions */}
+                <Card className="w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50 to-white hover:scale-105">
+                  <CardContent className="p-4 sm:p-6 md:p-8">
+                    <div className="mb-4 sm:mb-6 overflow-hidden rounded-lg">
+                      <img
+                        src="marketing.jpg"
+                        alt="Automation Solutions"
+                        className="w-full h-40 sm:h-48 md:h-52 object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-center text-gray-800 min-h-[56px] sm:min-h-[64px]">
+                   3D Visualization & Digital Twin Platforms
+                    </h3>
+                    <Button asChild className="w-full bg-green-600 hover:bg-green-700 text-sm sm:text-base">
+                      <a href="/development" className="flex items-center justify-center">
+                        Visualize Now
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+                {/* Card 3 - Automation Solutions */}
+                <Card className="w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-green-50 to-white hover:scale-105">
+                  <CardContent className="p-4 sm:p-6 md:p-8">
+                    <div className="mb-4 sm:mb-6 overflow-hidden rounded-lg">
+                      <img
+                        src="marketing.jpg"
+                        alt="Automation Solutions"
+                        className="w-full h-40 sm:h-48 md:h-52 object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-center text-gray-800 min-h-[56px] sm:min-h-[64px]">
+                      Automation for Business Workflows
+                    </h3>
+                    <Button asChild className="w-full bg-green-600 hover:bg-green-700 text-sm sm:text-base">
+                      <a href="/development" className="flex items-center justify-center">
+                        Automate Now
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {/* Card 4 - Cloud Integration */}
+                <Card className="w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-orange-50 to-white hover:scale-105">
+                  <CardContent className="p-4 sm:p-6 md:p-8">
+                    <div className="mb-4 sm:mb-6 overflow-hidden rounded-lg">
+                      <img
+                        src="teamwork.jpg"
+                        alt="Cloud Integration"
+                        className="w-full h-40 sm:h-48 md:h-52 object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-center text-gray-800 min-h-[56px] sm:min-h-[64px]">
+                      IOT Integration 
+                    </h3>
+                    <Button asChild className="w-full bg-orange-600 hover:bg-orange-700 text-sm sm:text-base">
+                      <a href="/development" className="flex items-center justify-center">
+                        Connect Now
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {/* Card 5 - Consulting Services */}
+                <Card className="w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-teal-50 to-white hover:scale-105">
+                  <CardContent className="p-4 sm:p-6 md:p-8">
+                    <div className="mb-4 sm:mb-6 overflow-hidden rounded-lg">
+                      <img
+                        src="marketing.jpg"
+                        alt="Consulting Services"
+                        className="w-full h-40 sm:h-48 md:h-52 object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-center text-gray-800 min-h-[56px] sm:min-h-[64px]">
+                      Want build something new ?
+                    </h3>
+                    <Button asChild className="w-full bg-teal-600 hover:bg-teal-700 text-sm sm:text-base">
+                      <a href="/contact" className="flex items-center justify-center">
+                        Let's build
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  </CardContent>
+                </Card>
+
+              </div>
+            </div>
+
+            {/* Scroll indicator for mobile/tablet */}
+            <div className="flex justify-end mt-4 sm:mt-6 md:mt-8 pr-2 sm:pr-4">
+              <div className="flex items-center text-gray-300 text-xs sm:text-sm">
+                <span className="mr-2">Scroll for more</span>
+                <div className="w-6 h-4 flex items-center">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </div>
-                <h3 className="font-serif text-2xl font-bold mb-4 text-center">High-end Development</h3>
-               <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
-  <a href="/development" className="flex items-center justify-center">
-    Build your dream
-    <ArrowRight className="ml-2 h-4 w-4" />
-  </a>
-</Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -204,14 +332,14 @@ export default function HomePage() {
     <div className="overflow-x-auto scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
       <div className="flex gap-6 pb-4 justify-center" style={{ width: "max-content", minWidth: "100%" }}>
         {[
-          { name: "Shamal", role: "AI Specialist", image: "shamal.jpg" },
+          { name: "Shamal", role: "Devops Engineer", image: "shamal.jpg" },
           { name: "Shuhaub", role: "Marketing & Ads specialist", image: "suhaib.jpg" },
-          { name: "Rishad", role: "Developer", image: "rishad.jpg" },
+           { name: "Shah", role: "CEO & Founder", image: "shah.jpg" },
           { name: "Bisher", role: "Developer", image: "bisher.jpg" },
           { name: "Shifan", role: "Media & Ads specialist", image: "shifan.jpg" },
           { name: "Murshid", role: "Head of Operations", image: "murshid.jpg" },
           { name: "Najaf", role: "Developer", image: "najaf.jpg" },
-          { name: "Shah", role: "Creative Director", image: "shah.jpg" },
+         
         ].map((member, index) => (
           <div 
             key={index} 
