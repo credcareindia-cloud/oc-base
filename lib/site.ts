@@ -33,7 +33,7 @@ export const nav = [
   { href: "/aec", label: "AEC Software" },
   { href: "/products", label: "Business Suite" },
   { href: "/services", label: "Growth" },
-  { href: "/broline", label: "Learn" },
+  { href: "/broline", label: "Learning School" },
   { href: "/about", label: "About" },
 ] as const
 

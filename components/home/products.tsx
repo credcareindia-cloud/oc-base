@@ -193,7 +193,7 @@ function RoostlingVisual() {
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: "-10% 0px" }}
         transition={{ duration: 0.8, delay: 0.4, ease: EASE }}
-        className="absolute left-5 right-5 top-5 rounded-xl border border-line bg-ink-2/95 p-3 shadow-2xl"
+        className="absolute left-5 right-5 top-14 rounded-xl border border-line bg-ink-2/95 p-3 shadow-2xl"
       >
         <div className="flex items-start gap-2.5">
           <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-signal/15 text-signal">
@@ -220,7 +220,7 @@ function RoostlingVisual() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.9, ease: EASE }}
-        className="absolute right-5 top-[46%] flex items-center gap-2 rounded-lg border border-line bg-ink/80 px-2.5 py-1.5 backdrop-blur"
+        className="absolute bottom-[3.75rem] right-5 flex items-center gap-2 rounded-lg border border-line bg-ink/80 px-2.5 py-1.5 backdrop-blur"
       >
         <Bell className="h-3 w-3 text-signal" />
         <p className="text-[10px] text-paper-2">

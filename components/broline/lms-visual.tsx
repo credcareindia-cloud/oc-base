@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useReducedMotion } from "framer-motion"
-import { CheckCircle2, GraduationCap, PlayCircle, Users, Workflow } from "lucide-react"
+import { CheckCircle2, GraduationCap, PlayCircle, Users } from "lucide-react"
 
 const EASE = [0.2, 0.8, 0.2, 1] as const
 
@@ -90,16 +90,13 @@ export function LmsVisual() {
               24 learners in this cohort
             </span>
           </div>
-          <span className="hidden items-center gap-1.5 whitespace-nowrap font-mono text-[10px] uppercase tracking-wider text-mute-2 sm:inline-flex">
-            <Workflow className="h-3 w-3 text-signal" /> Project due Fri
-          </span>
         </div>
       </motion.div>
 
       {/* certificate chip */}
       <motion.div
         {...fade(1.1, 20)}
-        className="glass absolute -bottom-5 -left-3 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl sm:-left-8"
+        className="glass absolute -bottom-6 right-4 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl sm:-right-6"
       >
         <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-paper">
           <GraduationCap className="h-4 w-4" />

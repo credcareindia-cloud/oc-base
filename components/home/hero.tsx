@@ -134,7 +134,7 @@ function HeroVisual() {
   const [opendesk, openland, roostling] = ownProducts
 
   return (
-    <div className="relative grid w-full grid-cols-2 gap-3 sm:block sm:h-[520px] sm:[perspective:1400px]">
+    <div className="relative grid w-full grid-cols-2 gap-3 sm:gap-4 lg:[transform:perspective(1800px)_rotateY(-9deg)_rotateX(3deg)] lg:[transform-style:preserve-3d]">
       {/* OpenDesk — main card */}
       <motion.a
         href={opendesk.url}
@@ -144,10 +144,10 @@ function HeroVisual() {
         initial={reduce ? false : { opacity: 0, y: 40, rotateX: 12 }}
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
         transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
-        className="glass noise group relative col-span-2 block rounded-3xl sm:absolute sm:left-0 sm:top-[3%] sm:w-[62%] p-5 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)] transition-colors hover:border-signal/50"
+        className="glass noise group relative col-span-2 block rounded-3xl p-5 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)] transition-colors hover:border-signal/50"
         style={{ transformStyle: "preserve-3d" }}
       >
-        <motion.div {...float(0.2)}>
+        <motion.div {...float(0.2, 6)}>
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-signal/15 text-signal">
@@ -191,12 +191,12 @@ function HeroVisual() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`${roostling.name} — ${roostling.tagline}`}
-        initial={reduce ? false : { opacity: 0, x: 40, y: 20 }}
-        animate={{ opacity: 1, x: 0, y: 0 }}
+        initial={reduce ? false : { opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.6, ease: EASE }}
-        className="glass relative block rounded-2xl sm:absolute sm:right-0 sm:top-0 sm:w-[37%] p-4 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)] transition-colors hover:border-signal/50"
+        className="glass relative flex flex-col rounded-2xl p-4 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)] transition-colors hover:border-signal/50"
       >
-        <motion.div {...float(0.9, 10)}>
+        <motion.div {...float(0.9, 5)} className="flex h-full flex-col">
           <div className="mb-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/5 text-paper">
@@ -223,7 +223,7 @@ function HeroVisual() {
               </motion.span>
             </div>
           ))}
-          <p className="mt-1 font-mono text-[10px] text-mute-2">BIM assistant on your taskbar</p>
+          <p className="mt-auto pt-2 font-mono text-[10px] text-mute-2">BIM assistant on your taskbar</p>
         </motion.div>
       </motion.a>
 
@@ -236,9 +236,9 @@ function HeroVisual() {
         initial={reduce ? false : { opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.8, ease: EASE }}
-        className="glass relative block rounded-2xl sm:absolute sm:bottom-0 sm:right-[5%] sm:w-[46%] p-4 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)] transition-colors hover:border-signal/50"
+        className="glass relative flex flex-col rounded-2xl p-4 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)] transition-colors hover:border-signal/50"
       >
-        <motion.div {...float(1.6, 12)}>
+        <motion.div {...float(1.6, 5)} className="flex h-full flex-col">
           <div className="mb-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/5 text-paper">
@@ -277,13 +277,13 @@ function HeroVisual() {
               className="block h-full rounded-full bg-gradient-to-r from-signal-deep to-signal"
             />
           </div>
-          <p className="mt-1.5 text-[10px] text-mute-2">Price trend · govt rules · zoning for any parcel</p>
+          <p className="mt-auto pt-2 text-[10px] text-mute-2">Price trend · govt rules · zoning for any parcel</p>
         </motion.div>
       </motion.a>
 
-      {/* Orbit ring */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 hidden h-[115%] sm:block w-[115%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-line/60" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 hidden h-[80%] sm:block w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-line/60" />
+      {/* glow */}
+      <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[3rem] bg-signal/[0.07] blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute inset-x-6 -bottom-10 -z-10 h-24 rounded-full bg-black/60 blur-2xl" aria-hidden />
     </div>
   )
 }
