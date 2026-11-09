@@ -245,11 +245,56 @@ export const testimonials = [
   },
 ]
 
-/* ─────────────── Case studies ─────────────── */
-export const work = [
-  { title: "Sabs Online", category: "Accounting + CRM automation", result: "End-to-end business automation for a retail group", image: "/clients/sabs.webp", accent: "from-amber-500/30" },
-  { title: "Motoclub", category: "E-commerce platform", result: "10k+ monthly visitors, marketing + storefront", image: "/clients/motoclub.webp", accent: "from-sky-500/30" },
-  { title: "Bismi Mess", category: "Food delivery app", result: "Ordering app with live kitchen operations", image: "/clients/bismi.webp", accent: "from-rose-500/30" },
+/* ─────────────── Our own products ─────────────── */
+export type OwnProduct = {
+  slug: "opendesk" | "openland" | "roostling"
+  name: string
+  domain: string
+  url: string
+  kicker: string
+  tagline: string
+  description: string
+  features: string[]
+  status: "Live" | "Early access"
+}
+
+export const ownProducts: OwnProduct[] = [
+  {
+    slug: "opendesk",
+    name: "OpenDesk",
+    domain: "opendesk.studio",
+    url: "https://opendesk.studio",
+    kicker: "Vibe modeling",
+    tagline: "From drawing to design, automatically.",
+    description:
+      "A vibe-modeling studio for architects and engineers. Sketch, describe or import a drawing and OpenDesk turns intent into parametric geometry — then pushes it straight into Revit.",
+    features: ["Drawing → design automation", "Natural-language modeling", "Live Revit connector", "Parametric, editable output"],
+    status: "Early access",
+  },
+  {
+    slug: "openland",
+    name: "OpenLand",
+    domain: "openland.in",
+    url: "https://openland.in",
+    kicker: "Land intelligence",
+    tagline: "Know the land before you draw a line.",
+    description:
+      "A data-first platform for land intelligence in India. Price trends, government construction rules, zoning, FAR and setbacks — for any parcel, before you commit to a site or a design.",
+    features: ["Price trends by locality", "Govt. construction rules & bylaws", "Zoning, FAR & setback data", "Parcel-level reports"],
+    status: "Early access",
+  },
+  {
+    slug: "roostling",
+    name: "Roostling for BIM",
+    domain: "roostling.com/bim",
+    url: "https://www.roostling.com/bim",
+    kicker: "BIM assistant",
+    tagline: "Someone on your taskbar who reads IFC, Revit and DWG.",
+    description:
+      "A desktop assistant for BIM professionals. Drop a model on it to view, summarise or convert; it watches the shared folder, turns BCF issues into reminders and keeps your team and versions in order.",
+    features: ["IFC / RVT / DWG viewer", "RVT → IFC & format converter", "Task & team management", "Version control & ISO 19650 checks"],
+    status: "Live",
+  },
 ]
 
 /* ─────────────── FAQ ─────────────── */

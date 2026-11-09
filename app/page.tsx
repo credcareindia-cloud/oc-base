@@ -7,11 +7,14 @@ import { Suite } from "@/components/home/suite"
 import { Growth } from "@/components/home/growth"
 import { Stats } from "@/components/home/stats"
 import { Process } from "@/components/home/process"
-import { Work } from "@/components/home/work"
+import { Products } from "@/components/home/products"
 import { Team } from "@/components/home/team"
 import { Testimonials } from "@/components/home/testimonials"
 import { FaqSection } from "@/components/home/faq-section"
 import { CtaBand } from "@/components/site/cta-band"
+import { JsonLd } from "@/components/site/json-ld"
+import { ownProducts } from "@/lib/content"
+import { SITE_URL } from "@/lib/site"
 
 export const metadata: Metadata = {
   title: "Opencoders — Software, Automation & Growth for the AEC Industry",
@@ -20,9 +23,29 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 }
 
+const productsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Opencoders products",
+  itemListElement: ownProducts.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "SoftwareApplication",
+      name: p.name,
+      url: p.url,
+      applicationCategory: "DesignApplication",
+      operatingSystem: p.slug === "roostling" ? "Windows" : "Web",
+      description: p.description,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  })),
+}
+
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={productsJsonLd} />
       <Hero />
       <Clients />
       <Manifesto />
@@ -31,7 +54,7 @@ export default function HomePage() {
       <Growth />
       <Stats />
       <Process />
-      <Work />
+      <Products />
       <Team />
       <Testimonials />
       <FaqSection />

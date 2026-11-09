@@ -2,7 +2,7 @@ import Link from "next/link"
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react"
 import { Logo } from "@/components/site/logo"
 import { site, whatsappLink } from "@/lib/site"
-import { aecSolutions, products, services } from "@/lib/content"
+import { aecSolutions, ownProducts, products, services } from "@/lib/content"
 
 const columns = [
   {
@@ -16,6 +16,10 @@ const columns = [
   {
     title: "Growth",
     links: services.map((s) => ({ label: s.title, href: `/services#${s.slug}` })),
+  },
+  {
+    title: "Our Products",
+    links: ownProducts.map((p) => ({ label: p.name, href: p.url, external: true })),
   },
   {
     title: "Company",
@@ -62,7 +66,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
             {columns.map((col) => (
               <div key={col.title}>
                 <h3 className="eyebrow mb-4">{col.title}</h3>
