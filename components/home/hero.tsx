@@ -3,10 +3,11 @@
 import * as React from "react"
 import Link from "next/link"
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
-import { ArrowDown, Building2, CheckCircle2, Cpu, Star, Workflow } from "lucide-react"
+import { ArrowDown, ArrowRight, Box, CheckCircle2, Layers3, MapPin, PenTool, Star, TrendingUp } from "lucide-react"
 import { WordReveal } from "@/components/site/motion"
 import { CTA } from "@/components/site/section"
 import { site } from "@/lib/site"
+import { ownProducts } from "@/lib/content"
 
 const EASE = [0.2, 0.8, 0.2, 1] as const
 
@@ -98,7 +99,6 @@ export function Hero() {
           <motion.div
             style={reduce ? undefined : { y: visualY, rotate: visualRotate }}
             className="relative mx-auto w-full max-w-[560px] lg:max-w-none"
-            aria-hidden
           >
             <HeroVisual />
           </motion.div>
@@ -120,7 +120,7 @@ export function Hero() {
   )
 }
 
-/* Floating product composition — pure CSS/motion, no images */
+/* Floating composition of our own products — pure CSS/motion, no images */
 function HeroVisual() {
   const reduce = useReducedMotion()
   const float = (delay: number, dist = 14) =>
@@ -130,75 +130,108 @@ function HeroVisual() {
           animate: { y: [0, -dist, 0] },
           transition: { duration: 7 + delay, repeat: Infinity, ease: "easeInOut" as const, delay },
         }
+  const draw = (delay: number) =>
+    reduce
+      ? {}
+      : { initial: { pathLength: 0, opacity: 0 }, animate: { pathLength: 1, opacity: 1 }, transition: { duration: 1.1, delay, ease: EASE } }
+
+  const [opendesk, openland, roostling] = ownProducts
 
   return (
-    <div className="relative aspect-[4/3] w-full [perspective:1400px]">
-      {/* Base card: model status */}
-      <motion.div
+    <div className="relative grid w-full grid-cols-2 gap-3 sm:block sm:aspect-[4/3] sm:[perspective:1400px]">
+      {/* OpenDesk — main card */}
+      <motion.a
+        href={opendesk.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${opendesk.name} — ${opendesk.tagline}`}
         initial={reduce ? false : { opacity: 0, y: 40, rotateX: 12 }}
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
         transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
-        className="glass noise absolute left-0 top-[14%] w-[64%] rounded-3xl p-5 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)]"
+        className="glass noise group relative col-span-2 block rounded-3xl sm:absolute sm:left-0 sm:top-[14%] sm:w-[64%] p-5 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.9)] transition-colors hover:border-signal/50"
         style={{ transformStyle: "preserve-3d" }}
       >
         <motion.div {...float(0.2)}>
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-signal/15 text-signal">
-                <Building2 className="h-4 w-4" />
+                <PenTool className="h-4 w-4" />
               </span>
               <div>
-                <p className="text-xs font-medium text-paper">Tower B — Federated model</p>
-                <p className="font-mono text-[10px] uppercase tracking-wider text-mute-2">Revit · IFC · Navisworks</p>
+                <p className="text-xs font-medium text-paper">{opendesk.name}</p>
+                <p className="font-mono text-[10px] uppercase tracking-wider text-mute-2">{opendesk.domain}</p>
               </div>
             </div>
-            <span className="rounded-full bg-emerald-400/15 px-2 py-0.5 font-mono text-[10px] text-emerald-300">LIVE</span>
+            <span className="rounded-full border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-signal">Vibe modeling</span>
           </div>
-          <div className="grid grid-cols-3 gap-2">
-            {[
-              { k: "Clashes", v: "12", d: "-38%" },
-              { k: "Sheets", v: "148", d: "auto" },
-              { k: "QTO", v: "99.2%", d: "match" },
-            ].map((m) => (
-              <div key={m.k} className="rounded-xl border border-line bg-ink/60 p-3">
-                <p className="font-mono text-[10px] uppercase tracking-wider text-mute-2">{m.k}</p>
-                <p className="mt-1 text-lg font-medium text-paper">{m.v}</p>
-                <p className="text-[10px] text-signal">{m.d}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-4 h-24 rounded-xl border border-line bg-ink/60 p-3">
-            <div className="flex h-full items-end gap-1.5">
-              {[35, 55, 40, 70, 62, 85, 58, 92, 75, 98, 80, 100].map((h, i) => (
-                <motion.span
+
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-xl border border-line bg-ink/60 p-3">
+            {/* sketch */}
+            <svg viewBox="0 0 120 90" className="h-20 w-full text-paper-2" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+              <motion.rect x="6" y="8" width="108" height="74" rx="2" {...draw(0.9)} />
+              <motion.path d="M6 44 H114" {...draw(1.2)} />
+              <motion.path d="M54 8 V82" {...draw(1.35)} />
+              <motion.path d="M84 44 V82" {...draw(1.5)} />
+              <motion.path d="M22 44 a14 14 0 0 1 14 -14" {...draw(1.7)} className="text-signal" />
+            </svg>
+            <motion.span
+              initial={reduce ? false : { opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.9, duration: 0.5, ease: EASE }}
+              className="flex h-7 w-7 items-center justify-center rounded-full border border-line bg-ink-2 text-signal"
+            >
+              <ArrowRight className="h-3.5 w-3.5" />
+            </motion.span>
+            {/* massing */}
+            <div className="relative h-20 w-full">
+              {[0, 1, 2].map((i) => (
+                <motion.div
                   key={i}
-                  initial={reduce ? false : { scaleY: 0 }}
-                  animate={{ scaleY: 1 }}
-                  transition={{ duration: 0.8, delay: 0.9 + i * 0.05, ease: EASE }}
-                  className="flex-1 origin-bottom rounded-sm bg-gradient-to-t from-signal/40 to-signal"
-                  style={{ height: `${h}%` }}
+                  initial={reduce ? false : { opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 2.0 + i * 0.15, duration: 0.7, ease: EASE }}
+                  className="absolute left-[14%] right-[6%] h-[36%] rounded-md border border-line-2 bg-gradient-to-br from-ink-4 to-ink-2 shadow-lg"
+                  style={{ bottom: `${i * 28}%`, borderColor: i === 2 ? "rgba(255,90,31,0.7)" : undefined }}
                 />
               ))}
             </div>
           </div>
-        </motion.div>
-      </motion.div>
 
-      {/* Automation card */}
-      <motion.div
+          <div className="mt-3 flex items-center justify-between text-[11px]">
+            <span className="text-paper-2">Drawing → design, automatically</span>
+            <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-mute-2">
+              <Layers3 className="h-3 w-3 text-signal" /> Revit connected
+            </span>
+          </div>
+        </motion.div>
+      </motion.a>
+
+      {/* Roostling — top right */}
+      <motion.a
+        href={roostling.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${roostling.name} — ${roostling.tagline}`}
         initial={reduce ? false : { opacity: 0, x: 40, y: 20 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 1, delay: 0.6, ease: EASE }}
-        className="glass absolute right-0 top-0 w-[40%] rounded-2xl p-4 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)]"
+        className="glass relative block rounded-2xl sm:absolute sm:right-0 sm:top-0 sm:w-[40%] p-4 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)] transition-colors hover:border-signal/50"
       >
         <motion.div {...float(0.9, 10)}>
-          <div className="mb-3 flex items-center gap-2">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/5 text-paper">
-              <Workflow className="h-3.5 w-3.5" />
-            </span>
-            <p className="text-xs font-medium text-paper">Automation run</p>
+          <div className="mb-3 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/5 text-paper">
+                <Box className="h-3.5 w-3.5" />
+              </span>
+              <p className="text-xs font-medium text-paper">Roostling</p>
+            </div>
+            <span className="rounded-full bg-emerald-400/15 px-2 py-0.5 font-mono text-[10px] text-emerald-300">LIVE</span>
           </div>
-          {["Generate sheets", "Export IFC", "Sync to ACC", "Notify PM"].map((s, i) => (
+          <div className="rounded-lg border border-line bg-ink/60 p-2.5">
+            <p className="font-mono text-[9px] uppercase tracking-wider text-mute-2">New in shared folder</p>
+            <p className="mt-0.5 truncate text-[11px] text-paper">PRJ-ABC-VL01-ZZ-ME-M3-0001.ifc</p>
+          </div>
+          {["Open in viewer", "Convert RVT → IFC", "Add issues (BCF)"].map((s, i) => (
             <div key={s} className="flex items-center justify-between py-1.5 text-[11px]">
               <span className="text-paper-2">{s}</span>
               <motion.span
@@ -211,57 +244,77 @@ function HeroVisual() {
               </motion.span>
             </div>
           ))}
-          <p className="mt-2 font-mono text-[10px] text-mute-2">
-            Saved <span className="text-signal">6h 40m</span> today
-          </p>
+          <p className="mt-1 font-mono text-[10px] text-mute-2">BIM assistant on your taskbar</p>
         </motion.div>
-      </motion.div>
+      </motion.a>
 
-      {/* Leads / CRM card */}
-      <motion.div
+      {/* OpenLand — bottom right */}
+      <motion.a
+        href={openland.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${openland.name} — ${openland.tagline}`}
         initial={reduce ? false : { opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.8, ease: EASE }}
-        className="glass absolute bottom-0 right-[4%] w-[50%] rounded-2xl p-4 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)]"
+        className="glass relative block rounded-2xl sm:absolute sm:bottom-0 sm:right-[4%] sm:w-[50%] p-4 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.9)] transition-colors hover:border-signal/50"
       >
         <motion.div {...float(1.6, 12)}>
           <div className="mb-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/5 text-paper">
-                <Cpu className="h-3.5 w-3.5" />
+                <MapPin className="h-3.5 w-3.5" />
               </span>
-              <p className="text-xs font-medium text-paper">Pipeline this week</p>
-            </div>
-            <span className="font-mono text-[10px] text-emerald-300">+24%</span>
-          </div>
-          <div className="space-y-2">
-            {[
-              { n: "Al Marwan Contracting", s: "Qualified", w: 82 },
-              { n: "Skyline Interiors", s: "Proposal", w: 64 },
-              { n: "Fineline Studio", s: "Won", w: 100 },
-            ].map((l, i) => (
-              <div key={l.n}>
-                <div className="flex items-center justify-between text-[11px]">
-                  <span className="text-paper-2">{l.n}</span>
-                  <span className="text-mute-2">{l.s}</span>
-                </div>
-                <div className="mt-1 h-1 w-full overflow-hidden rounded-full bg-white/5">
-                  <motion.span
-                    initial={reduce ? false : { width: 0 }}
-                    animate={{ width: `${l.w}%` }}
-                    transition={{ duration: 1.2, delay: 1.3 + i * 0.15, ease: EASE }}
-                    className="block h-full rounded-full bg-gradient-to-r from-signal-deep to-signal"
-                  />
-                </div>
+              <div>
+                <p className="text-xs font-medium text-paper">OpenLand</p>
+                <p className="font-mono text-[9px] uppercase tracking-wider text-mute-2">Land intelligence</p>
               </div>
-            ))}
+            </div>
+            <span className="inline-flex items-center gap-1 font-mono text-[10px] text-emerald-300">
+              <TrendingUp className="h-3 w-3" /> +18%
+            </span>
           </div>
+          <div className="grid grid-cols-[1.2fr_1fr] gap-2">
+            <div className="grid grid-cols-6 gap-[3px]">
+              {Array.from({ length: 18 }).map((_, i) => (
+                <motion.span
+                  key={i}
+                  initial={reduce ? false : { opacity: 0, scale: 0.7 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.3 + i * 0.03, duration: 0.4 }}
+                  className={i === 8 ? "aspect-square rounded-[2px] border border-signal bg-signal/30" : "aspect-square rounded-[2px] border border-line bg-white/[0.03]"}
+                />
+              ))}
+            </div>
+            <div className="flex flex-col gap-1">
+              {["FAR 2.5", "Setback 3 m", "Zone: Res."].map((c, i) => (
+                <motion.span
+                  key={c}
+                  initial={reduce ? false : { opacity: 0, x: 8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.6 + i * 0.12, duration: 0.45 }}
+                  className="rounded border border-line bg-ink/60 px-1.5 py-0.5 text-[9px] text-paper-2"
+                >
+                  {c}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+          <div className="mt-2.5 h-1 w-full overflow-hidden rounded-full bg-white/5">
+            <motion.span
+              initial={reduce ? false : { width: 0 }}
+              animate={{ width: "72%" }}
+              transition={{ duration: 1.2, delay: 1.5, ease: EASE }}
+              className="block h-full rounded-full bg-gradient-to-r from-signal-deep to-signal"
+            />
+          </div>
+          <p className="mt-1.5 text-[10px] text-mute-2">Price trend · govt rules · zoning for any parcel</p>
         </motion.div>
-      </motion.div>
+      </motion.a>
 
       {/* Orbit ring */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[115%] w-[115%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-line/60" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-line/60" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 hidden h-[115%] sm:block w-[115%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-line/60" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 hidden h-[80%] sm:block w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-line/60" />
     </div>
   )
 }
