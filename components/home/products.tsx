@@ -1,10 +1,11 @@
 "use client"
 
 import { motion, useReducedMotion } from "framer-motion"
-import { ArrowUpRight, Bell, Box, FileBox, Layers3, MapPin, Pencil, TrendingUp } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Bell, Box, FileBox, Layers3, TrendingUp } from "lucide-react"
 import { ownProducts, type OwnProduct } from "@/lib/content"
 import { Section, SectionHeading } from "@/components/site/section"
 import { Stagger, StaggerItem, TiltCard } from "@/components/site/motion"
+import { FloorPlan, IsoBuilding, LandMap } from "@/components/home/product-visuals"
 import { cn } from "@/lib/utils"
 
 const EASE = [0.2, 0.8, 0.2, 1] as const
@@ -85,59 +86,40 @@ function Visual({ slug }: { slug: OwnProduct["slug"] }) {
   return <RoostlingVisual />
 }
 
-/* OpenDesk — plan lines draw, then 3D massing rises */
+/* OpenDesk — a real floor plan draws itself, then the building rises from it */
 function OpenDeskVisual() {
   const reduce = useReducedMotion()
-  const draw = (delay: number) =>
-    reduce
-      ? {}
-      : {
-          initial: { pathLength: 0, opacity: 0 },
-          whileInView: { pathLength: 1, opacity: 1 },
-          viewport: { once: true, margin: "-10% 0px" },
-          transition: { duration: 1.2, delay, ease: EASE },
-        }
-  const rise = (delay: number) =>
-    reduce
-      ? {}
-      : {
-          initial: { opacity: 0, y: 18 },
-          whileInView: { opacity: 1, y: 0 },
-          viewport: { once: true, margin: "-10% 0px" },
-          transition: { duration: 0.9, delay, ease: EASE },
-        }
   return (
-    <div className="absolute inset-0 flex items-center">
-      {/* Sketch */}
-      <svg viewBox="0 0 160 120" className="absolute left-[6%] top-[22%] h-[56%] w-[40%] text-paper-2" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
-        <motion.rect x="10" y="14" width="140" height="92" rx="2" {...draw(0.1)} />
-        <motion.path d="M10 56 H150" {...draw(0.4)} />
-        <motion.path d="M70 14 V106" {...draw(0.55)} />
-        <motion.path d="M110 56 V106" {...draw(0.7)} />
-        <motion.path d="M30 56 a16 16 0 0 1 16 -16" {...draw(0.9)} className="text-signal" />
-        <motion.path d="M92 14 V32" {...draw(1.0)} className="text-signal" />
-      </svg>
-      <div className="absolute left-[46%] top-1/2 -translate-y-1/2">
-        <motion.div {...rise(1.1)} className="flex h-8 w-8 items-center justify-center rounded-full border border-line bg-ink-2 text-signal">
-          <Pencil className="h-3.5 w-3.5" />
-        </motion.div>
-      </div>
-      {/* Massing */}
-      <div className="absolute right-[8%] top-[18%] h-[64%] w-[36%] [perspective:600px]">
-        {[0, 1, 2].map((i) => (
-          <motion.div
-            key={i}
-            {...rise(1.2 + i * 0.15)}
-            className="absolute left-0 right-0 rounded-md border border-line-2 bg-gradient-to-br from-ink-4 to-ink-2 shadow-xl"
-            style={{
-              bottom: `${i * 30}%`,
-              height: "34%",
-              transform: `rotateX(58deg) rotateZ(-38deg) translateZ(${i * 10}px)`,
-              borderColor: i === 2 ? "rgba(255,90,31,0.6)" : undefined,
-            }}
-          />
-        ))}
-      </div>
+    <div className="absolute inset-0">
+      {/* drawing sheet */}
+      <motion.div
+        initial={reduce ? false : { opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10% 0px" }}
+        transition={{ duration: 0.7, ease: EASE }}
+        className="absolute bottom-[12%] left-[5%] top-[12%] w-[56%] rounded-lg border border-line bg-ink-2/80 p-2 shadow-2xl backdrop-blur-sm"
+      >
+        <div className="mb-1 flex items-center justify-between px-1 font-mono text-[8px] uppercase tracking-[0.16em] text-mute-2">
+          <span>A-101 · Level 01</span>
+          <span>1:100</span>
+        </div>
+        <FloorPlan className="h-[calc(100%-14px)] w-full" delay={0.2} />
+      </motion.div>
+
+      {/* arrow */}
+      <motion.div
+        initial={reduce ? false : { opacity: 0, scale: 0.6 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 1.8, duration: 0.5, ease: EASE }}
+        className="absolute left-[58%] top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-signal/40 bg-ink text-signal shadow-[0_0_24px_rgba(255,90,31,0.35)]"
+      >
+        <ArrowRight className="h-3.5 w-3.5" />
+      </motion.div>
+
+      {/* building */}
+      <IsoBuilding className="absolute bottom-[4%] right-[3%] top-[6%] h-[90%] w-[38%]" delay={1.4} />
+
       <div className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full border border-line bg-ink/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-paper-2 backdrop-blur">
         <Layers3 className="h-3 w-3 text-signal" /> Revit sync
       </div>
@@ -145,65 +127,56 @@ function OpenDeskVisual() {
   )
 }
 
-/* OpenLand — parcel grid, selected plot, price sparkline, rule chips */
+/* OpenLand — a city map with the selected plot, price trend and rule chips */
 function OpenLandVisual() {
   const reduce = useReducedMotion()
-  const parcels = Array.from({ length: 24 })
   return (
-    <div className="absolute inset-0 p-5">
-      <div className="grid h-[58%] grid-cols-6 gap-1">
-        {parcels.map((_, i) => (
-          <motion.div
-            key={i}
-            initial={reduce ? false : { opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-10% 0px" }}
-            transition={{ delay: 0.03 * i, duration: 0.5, ease: EASE }}
-            className={cn("rounded-[3px] border border-line bg-white/[0.03]", i === 9 && "relative border-signal bg-signal/20")}
+    <div className="absolute inset-0">
+      <LandMap className="absolute inset-0 h-full w-full" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink via-ink/70 to-transparent" aria-hidden />
+
+      {/* price card */}
+      <motion.div
+        initial={reduce ? false : { opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 1.0, duration: 0.6, ease: EASE }}
+        className="absolute bottom-4 left-4 w-[46%] rounded-xl border border-line bg-ink/80 p-3 backdrop-blur"
+      >
+        <div className="flex items-center justify-between">
+          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-mute">Price / cent</p>
+          <span className="inline-flex items-center gap-1 text-[11px] text-emerald-300">
+            <TrendingUp className="h-3 w-3" /> +18%
+          </span>
+        </div>
+        <svg viewBox="0 0 120 32" className="mt-1.5 h-7 w-full" fill="none">
+          <motion.path
+            d="M0 26 C 15 24, 25 20, 38 21 S 60 14, 72 12 S 95 10, 120 4"
+            stroke="#ff5a1f"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            initial={reduce ? false : { pathLength: 0 }}
+            whileInView={{ pathLength: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, delay: 1.2, ease: EASE }}
+          />
+        </svg>
+      </motion.div>
+
+      {/* rule chips */}
+      <div className="absolute bottom-4 right-4 flex w-[40%] flex-col items-end gap-1.5">
+        {["FAR 2.5", "Setback 3 m", "Zone: Residential"].map((c, i) => (
+          <motion.span
+            key={c}
+            initial={reduce ? false : { opacity: 0, x: 10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.3 + i * 0.12, duration: 0.5 }}
+            className="rounded-md border border-line bg-ink/80 px-2 py-1 text-[10px] text-paper-2 backdrop-blur"
           >
-            {i === 9 && (
-              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-signal text-white">
-                <MapPin className="h-3 w-3" />
-              </span>
-            )}
-          </motion.div>
+            {c}
+          </motion.span>
         ))}
-      </div>
-      <div className="mt-3 flex items-end gap-3">
-        <div className="flex-1 rounded-xl border border-line bg-ink/70 p-3">
-          <div className="flex items-center justify-between">
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-mute">Price / cent</p>
-            <span className="inline-flex items-center gap-1 text-[11px] text-emerald-300">
-              <TrendingUp className="h-3 w-3" /> +18%
-            </span>
-          </div>
-          <svg viewBox="0 0 120 32" className="mt-2 h-8 w-full" fill="none">
-            <motion.path
-              d="M0 26 C 15 24, 25 20, 38 21 S 60 14, 72 12 S 95 10, 120 4"
-              stroke="#ff5a1f"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              initial={reduce ? false : { pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.4, delay: 0.6, ease: EASE }}
-            />
-          </svg>
-        </div>
-        <div className="flex w-[42%] flex-col gap-1.5">
-          {["FAR 2.5", "Setback 3 m", "Zone: Residential"].map((c, i) => (
-            <motion.span
-              key={c}
-              initial={reduce ? false : { opacity: 0, x: 10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.8 + i * 0.12, duration: 0.5 }}
-              className="rounded-md border border-line bg-ink/70 px-2 py-1 text-[10px] text-paper-2"
-            >
-              {c}
-            </motion.span>
-          ))}
-        </div>
       </div>
     </div>
   )
