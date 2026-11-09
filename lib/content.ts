@@ -336,6 +336,71 @@ export const serviceOptions = [
   "Meta / Google Ads automation",
   "Influencer marketing (UAE / India)",
   "Sales agents & retargeting",
+  "Training & courses (Broline)",
   "Partnership",
   "Other",
 ]
+
+/* ───────────────────────── Broline — Brother Online (our school) ───────────────────────── */
+
+export const broline = {
+  name: "Broline",
+  fullName: "Brother Online",
+  domain: "broline.in",
+  url: "https://broline.in",
+  coursesUrl: "https://broline.in",
+  tagline: "The Opencoders school for automation, teams and code.",
+  description:
+    "Broline (Brother Online) is the learning arm of Opencoders. We teach companies how to automate their operations, train employees on the tools they actually use, and run development courses — live cohorts, corporate workshops and self-paced learning on the Broline LMS.",
+  tracks: [
+    {
+      slug: "automation",
+      kicker: "For companies",
+      title: "Automate your business",
+      description:
+        "A hands-on programme for founders, ops heads and managers. Map your workflows, pick the right tools and ship real automations — CRM, HR, accounting, WhatsApp, documents and reporting — before the course ends.",
+      outcomes: ["Map and prioritise what to automate", "No-code + code automation stack", "AI agents for routine work", "Live on your own business data"],
+      duration: "4 weeks · live",
+      audience: "Founders, ops & department heads",
+    },
+    {
+      slug: "teams",
+      kicker: "For teams",
+      title: "Train your employees",
+      description:
+        "Role-based training that gets a team productive on the software they use every day — BIM & Revit workflows, your CRM/HRMS/accounting suite, or a new process. On-site in India & UAE or online, with assessments so you can see who learned what.",
+      outcomes: ["Curriculum built around your roles", "On-site or online cohorts", "Assessments & completion tracking", "Onboarding playbooks you keep"],
+      duration: "1–6 weeks · cohort",
+      audience: "Teams of 5–200",
+    },
+    {
+      slug: "development",
+      kicker: "For builders",
+      title: "Learn development",
+      description:
+        "From first line of code to shipping products. Web development with React & Next.js, Python & automation scripting, BIM programming (Revit API, Dynamo, IFC) and building AI-powered apps — taught by the engineers who build Opencoders products.",
+      outcomes: ["Web, Python & BIM programming tracks", "Portfolio projects, not just exercises", "Mentorship from working engineers", "Internship & hiring pathway at Opencoders"],
+      duration: "8–16 weeks · live + LMS",
+      audience: "Students, career switchers, engineers",
+    },
+  ],
+  formats: [
+    { title: "Live cohorts", description: "Scheduled online batches with a lead instructor, weekly builds and feedback." },
+    { title: "Self-paced on the LMS", description: "Recorded lessons, labs and quizzes on broline.in — learn on your own time." },
+    { title: "Corporate workshops", description: "On-site or virtual intensives designed around one company's tools and processes." },
+    { title: "1:1 mentorship", description: "Office hours and code reviews with Opencoders engineers." },
+  ],
+  steps: [
+    { title: "Pick a track", description: "Automation, team training or development — or tell us what your team needs and we'll scope it." },
+    { title: "Learn by building", description: "Every module ends with something real: an automation running, a model delivered, an app deployed." },
+    { title: "Get assessed", description: "Quizzes, project reviews and completion tracking on the Broline LMS." },
+    { title: "Certificate & next step", description: "A Broline certificate, plus implementation support for companies or a hiring pathway for developers." },
+  ],
+  faqs: [
+    { q: "What is Broline?", a: "Broline — short for Brother Online — is the learning school run by Opencoders. It hosts our courses, corporate training programmes and the Broline LMS at broline.in." },
+    { q: "Who are the courses for?", a: "Three groups: companies that want to automate how they work, teams that need training on specific software or processes, and individuals who want to learn development — web, Python, BIM programming and AI apps." },
+    { q: "Are the courses online or in person?", a: "Both. Live online cohorts and self-paced learning run on the Broline LMS. Corporate training can be delivered on-site in India and the UAE or virtually." },
+    { q: "Do I get a certificate?", a: "Yes. Every completed track issues a Broline certificate. Corporate programmes also include assessment reports for each participant." },
+    { q: "How do I enrol?", a: "Individual courses are open on broline.in. For company or team training, send us a request and we'll scope a programme around your roles and tools." },
+  ],
+} as const

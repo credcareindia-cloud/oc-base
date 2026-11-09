@@ -2,7 +2,7 @@ import Link from "next/link"
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react"
 import { Logo } from "@/components/site/logo"
 import { site, whatsappLink } from "@/lib/site"
-import { aecSolutions, ownProducts, products, services } from "@/lib/content"
+import { aecSolutions, broline, ownProducts, products, services } from "@/lib/content"
 
 const columns = [
   {
@@ -20,6 +20,13 @@ const columns = [
   {
     title: "Our Products",
     links: ownProducts.map((p) => ({ label: p.name, href: p.url, external: true })),
+  },
+  {
+    title: "Learn — Broline",
+    links: [
+      ...broline.tracks.map((t) => ({ label: t.title, href: `/broline#${t.slug}` })),
+      { label: "Join courses on broline.in", href: broline.coursesUrl, external: true },
+    ],
   },
   {
     title: "Company",
@@ -66,7 +73,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             {columns.map((col) => (
               <div key={col.title}>
                 <h3 className="eyebrow mb-4">{col.title}</h3>

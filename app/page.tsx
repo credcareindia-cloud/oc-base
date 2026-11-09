@@ -9,6 +9,7 @@ import { Stats } from "@/components/home/stats"
 import { Process } from "@/components/home/process"
 import { Products } from "@/components/home/products"
 import { Team } from "@/components/home/team"
+import { Academy } from "@/components/home/academy"
 import { Testimonials } from "@/components/home/testimonials"
 import { FaqSection } from "@/components/home/faq-section"
 import { CtaBand } from "@/components/site/cta-band"
@@ -55,6 +56,7 @@ export default function HomePage() {
       <Stats />
       <Process />
       <Products />
+      <Academy />
       <Team />
       <Testimonials />
       <FaqSection />

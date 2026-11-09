@@ -17,6 +17,11 @@ const nextConfig = {
     return [
       { source: "/development", destination: "/aec", permanent: true },
       { source: "/lead-generation", destination: "/services", permanent: true },
+      { source: "/academy", destination: "/broline", permanent: true },
+      { source: "/training", destination: "/broline", permanent: true },
+      { source: "/learn", destination: "/broline", permanent: true },
+      { source: "/courses", destination: "https://broline.in", permanent: false },
+      { source: "/lms", destination: "https://broline.in", permanent: false },
     ]
   },
   async headers() {
